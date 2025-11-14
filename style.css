@@ -2,148 +2,122 @@ html, body, .stApp {
     background-color: #0d0d0d !important;
     color: #f2f2f2 !important;
     font-family: "Inter", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 [data-testid="stAppViewContainer"] > .main > div {
-    max-width: 900px !important;
+    max-width: 850px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
 }
 
+/* HEADER */
 .app-header {
     background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
-    padding: 3rem 2rem;
-    border-radius: 1.5rem;
-    margin-bottom: 3rem;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
-    box-shadow: 0 0 2rem rgba(130, 80, 255, 0.3);
+    box-shadow: 0 0 1.2rem rgba(130, 80, 255, 0.3);
 }
 
 .app-header h1 {
     color: #ffffff;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
 }
 
 .app-header p {
     color: #cccccc;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
+/* SIDEBAR */
 [data-testid="stSidebar"] {
     background: #121212 !important;
     border-right: 1px solid #222 !important;
+    min-width: 330px !important;
+    max-width: 330px !important;
 }
 
 .sidebar-info {
     background: #1b1b1b;
-    padding: 2rem;
-    border-radius: 1rem;
-    margin: 2rem 0;
-    border-left: 4px solid #744DFF;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    margin: 1.5rem 0;
+    border-left: 3px solid #744DFF;
 }
 
+/* CARDS */
 .info-card {
     background: #1a1a1a;
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    margin: 2.5rem 0;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    margin: 2rem 0;
     border: 1px solid #262626;
-    box-shadow: 0 0 1.5rem rgba(90, 60, 255, 0.25);
+    box-shadow: 0 0 1rem rgba(90, 60, 255, 0.25);
 }
 
 .info-card:hover {
-    transform: translateY(-0.2rem);
-    box-shadow: 0 0 2rem rgba(110, 80, 255, 0.35);
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0 1.5rem rgba(110, 80, 255, 0.35);
 }
 
+/* BUTTONS */
 .stButton > button {
     background: linear-gradient(135deg, #713afe, #9c4dff);
     color: white;
     border: none;
-    padding: 1.3rem 2rem;
-    font-size: 1.4rem;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    border-radius: 4rem;
+    border-radius: 3rem;
     width: 100%;
-    box-shadow: 0 0 1.5rem rgba(120, 80, 255, 0.35);
+    box-shadow: 0 0 1rem rgba(120, 80, 255, 0.35);
 }
 
 .stButton > button:hover {
-    transform: translateY(-0.2rem);
-    box-shadow: 0 0 2rem rgba(150, 100, 255, 0.55);
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0 1.5rem rgba(150, 100, 255, 0.55);
 }
 
+/* DOWNLOAD BUTTON */
 .stDownloadButton > button {
     background: linear-gradient(135deg, #06b6d4, #34d399);
     color: black;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    padding: 1.2rem;
-    border-radius: 4rem;
+    padding: 1rem;
+    border-radius: 3rem;
     width: 100%;
 }
 
+/* TEXT AREA */
 .stTextArea textarea {
     background: #111 !important;
     color: #fff !important;
     border: 1px solid #333 !important;
-    border-radius: 1rem !important;
-    padding: 1.3rem !important;
-    font-size: 1.3rem;
+    border-radius: 0.8rem !important;
+    padding: 1rem !important;
+    font-size: 1.1rem;
 }
 
+/* SELECT BOX */
 .stSelectbox div {
     background: #1a1a1a !important;
     border: 1px solid #333 !important;
-    border-radius: 1rem;
-    font-size: 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 1.1rem;
     color: #fff !important;
 }
 
-.metric-container {
-    background: #161616;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    border-left: 4px solid #744DFF;
-    font-size: 1.3rem;
-    box-shadow: 0 0 1rem rgba(110, 80, 255, 0.25);
-}
-
-.chat-box {
-    background: #151515;
-    padding: 2rem;
-    border-radius: 1rem;
-    border-left: 4px solid #7a5bff;
-    font-size: 1.3rem;
-    color: white;
-    margin-top: 1.5rem;
-}
-
-::-webkit-scrollbar {
-    width: 0.8rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #744DFF;
-    border-radius: 1rem;
-}
-
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-h2, h3 {
-    color: white !important;
-    font-weight: 800 !important;
-    border-bottom: 3px solid #744DFF;
-    padding-bottom: 0.3rem;
-    margin-top: 2rem;
-    font-size: 2.2rem;
+.stSelectbox div p {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    white-space: normal !important;
 }
 
 .stSelectbox > div > div {
@@ -156,8 +130,47 @@ h2, h3 {
     white-space: normal !important;
 }
 
-.stSelectbox div p {
-    font-size: 1.3rem !important;
-    font-weight: 600 !important;
-    white-space: normal !important;
+/* METRICS */
+.metric-container {
+    background: #161616;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border-left: 3px solid #744DFF;
+    font-size: 1.1rem;
+    box-shadow: 0 0 0.8rem rgba(110, 80, 255, 0.25);
+}
+
+/* CHAT BOX */
+.chat-box {
+    background: #151515;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border-left: 3px solid #7a5bff;
+    font-size: 1.1rem;
+    color: white;
+    margin-top: 1.2rem;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #744DFF;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+/* HEADINGS */
+h2, h3 {
+    color: white !important;
+    font-weight: 800 !important;
+    border-bottom: 2px solid #744DFF;
+    padding-bottom: 0.25rem;
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
 }
