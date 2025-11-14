@@ -1,5 +1,4 @@
-import requests
-from typing import Dict, Any, List
+from typing import Dict, Any
 import re
 
 class ATSScorer:
@@ -60,6 +59,7 @@ class ATSScorer:
             }
         }
     
+    @staticmethod
     def _check_keywords(text: str, job_desc: str) -> int:
         """Check for relevant keywords"""
         common_keywords = ['python', 'java', 'javascript', 'react', 'sql', 'aws', 
@@ -68,6 +68,7 @@ class ATSScorer:
         found = sum(1 for kw in common_keywords if kw in text_lower)
         return min(int((found / len(common_keywords)) * 20), 20)
     
+    @staticmethod
     def _check_formatting(text: str) -> int:
         """Check resume structure"""
         required_sections = ['education', 'experience', 'skills']
@@ -75,6 +76,7 @@ class ATSScorer:
         found = sum(1 for section in required_sections if section in text_lower)
         return int((found / len(required_sections)) * 20)
 
+    @staticmethod
     def _check_contact_info(text: str) -> int:
         """Check for contact information"""
         has_email = bool(re.search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', text))
@@ -84,11 +86,13 @@ class ATSScorer:
         if has_phone: score += 5
         return score
     
+    @staticmethod
     def _check_achievements(text: str) -> int:
         """Check for quantifiable achievements"""
         numbers = re.findall(r'\b\d+%|\b\d+\+|\$\d+|\b\d+ (?:years|months)', text)
         return min(len(numbers) * 4, 20)
 
+    @staticmethod
     def _check_length(text: str) -> int:
         """Check resume length"""
         word_count = len(text.split())
@@ -98,6 +102,7 @@ class ATSScorer:
             return 7
         return 5
     
+    @staticmethod
     def _check_action_verbs(text: str) -> int:
         """Check for strong action verbs"""
         action_verbs = ['developed', 'managed', 'led', 'created', 'implemented', 

@@ -6,6 +6,7 @@ from src.parsers.parser import ResumeParser
 from src.tools.ats_service import ATSScorer
 from src.tools.enhance_service import Enhancer
 from src.tools.render_service import ResumeGenerator
+from src.tools.extraction_service import ResumeExtractor
 
 
 class ResumeAgent:
@@ -38,6 +39,8 @@ class ResumeAgent:
     def process_resume(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Full resume processing pipeline"""
         results = {}
+        
+        # Parse resume
         if 'file_path' in input_data:
             file_path = input_data['file_path']
             if file_path.endswith('.pdf'):
@@ -48,24 +51,34 @@ class ResumeAgent:
                 raise ValueError("Unsupported file type")
         else:
             resume_text = self.parser.parse_manual_input(input_data)
+        
         results['original_text'] = resume_text
 
+        # Score original
         results['initial_score'] = self.ats_scorer.calculate_score(resume_text)
 
+        # Enhance
         enhanced_text = self.enhancer.enhance_with_groq(resume_text)
         results['enhanced_text'] = enhanced_text
 
+        # Score enhanced
         results['final_score'] = self.ats_scorer.calculate_score(enhanced_text)
 
-        docx_path = self.generator.generate_docx(input_data)
-        pdf_path = self.generator.generate_pdf(input_data)
+        # Extract structured data for generation
+        extractor = ResumeExtractor(enhanced_text)
+        structured_data = extractor.extraction()
+        resume_dict = structured_data.model_dump()
+
+        # Generate files
+        docx_path = self.generator.generate_docx(resume_dict)
+        pdf_path = self.generator.generate_pdf(resume_dict)
         results['docx_path'] = docx_path
         results['pdf_path'] = pdf_path
 
         return results
 
     def chat(self, message: str, chat_history: List = None) -> str:
-        """Chat-like interaction """
+        """Chat-like interaction"""
         if chat_history is None:
             chat_history = []
         formatted_prompt = self.prompt.format(input=message)

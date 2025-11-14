@@ -1,9 +1,10 @@
+
 langchain_community
 langchain_core
 langchain_groq
 fastapi
 pypdf
-dotenv
+python-dotenv
 python-docx
 reportlab
 pydantic

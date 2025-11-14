@@ -6,9 +6,9 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.lib import colors
 
-from templates.professional_template import generate_professional_docx
-from templates.modern_template import generate_modern_docx
-from templates.academic_template import generate_academic_docx
+from src.templates.professional_template import generate_professional_docx
+from src.templates.modern_template import generate_modern_docx
+from src.templates.academic_template import generate_academic_docx
 
 
 class ResumeGenerator:

@@ -11,6 +11,7 @@ class ResumeParser:
         loader = PyPDFLoader(file_path)
         documents = loader.load() 
         text = "\n".join([doc.page_content for doc in documents])
+        print(text)
         return text
     
     @staticmethod
@@ -55,3 +56,4 @@ class ResumeParser:
                 sections.append(f"{proj.get('name', '')}: {proj.get('description', '')}")
         
         return "\n".join(sections)
+
