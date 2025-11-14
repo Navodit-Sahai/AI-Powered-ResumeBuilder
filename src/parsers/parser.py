@@ -11,7 +11,7 @@ class ResumeParser:
         loader = PyPDFLoader(file_path)
         documents = loader.load() 
         text = "\n".join([doc.page_content for doc in documents])
-        print(text)
+        # print(text)
         return text
     
     @staticmethod

@@ -40,6 +40,9 @@ class ResumeAgent:
         """Full resume processing pipeline"""
         results = {}
         
+        # Get template style from input (default to professional)
+        template_style = input_data.get('template_style', 'professional')
+        
         # Parse resume
         if 'file_path' in input_data:
             file_path = input_data['file_path']
@@ -69,11 +72,21 @@ class ResumeAgent:
         structured_data = extractor.extraction()
         resume_dict = structured_data.model_dump()
 
-        # Generate files
-        docx_path = self.generator.generate_docx(resume_dict)
-        pdf_path = self.generator.generate_pdf(resume_dict)
+        # Generate files with selected template style
+        docx_path = self.generator.generate_docx(
+            resume_dict, 
+            template_style=template_style,
+            filename=f"resume_{template_style}.docx"
+        )
+        pdf_path = self.generator.generate_pdf(
+            resume_dict, 
+            template_style=template_style,
+            filename=f"resume_{template_style}.pdf"
+        )
+        
         results['docx_path'] = docx_path
         results['pdf_path'] = pdf_path
+        results['template_style'] = template_style
 
         return results
 
